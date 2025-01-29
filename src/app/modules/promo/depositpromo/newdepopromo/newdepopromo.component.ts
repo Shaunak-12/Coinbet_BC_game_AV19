@@ -1,0 +1,172 @@
+import { config } from '@services/config';
+import { ApiService } from '@services/api.service';
+import { CommonFunctionService } from '@services/common-function.service';
+
+import { Component, Input, Output, EventEmitter, OnInit, ViewEncapsulation } from '@angular/core';
+import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MAT_RIPPLE_GLOBAL_OPTIONS, MatRippleModule } from '@angular/material/core';
+// import _moment, { Moment } from 'moment';
+
+import { FormControl, FormsModule, Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
+// import {MatDatepicker} from '@angular/material/datepicker';
+import _moment, { default as _rollupMoment } from 'moment';
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
+import { CommonModule } from '@angular/common';
+import { FeatherModule } from 'angular-feather';
+
+@Component({
+  selector: 'app-newdepopromo',
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatSnackBarModule,
+    MatIconModule,
+    FormsModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatTabsModule,
+    MatDialogModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatPaginatorModule,
+    MatSlideToggleModule,
+    MatCheckboxModule,
+    MatProgressBarModule,
+    // MatAccordion,
+     MatExpansionModule,
+    FeatherModule
+  ],
+  templateUrl: './newdepopromo.component.html',
+  styleUrl: './newdepopromo.component.scss'
+})
+export class NewdepopromoComponent implements OnInit {
+  @Input() submitBtn!: boolean;
+  @Input() tmpArr: any = [];
+  @Input() levArr: any = [];
+  @Output() onSave = new EventEmitter<any>();
+  @Output() onCancel = new EventEmitter<any>();
+  submitDisabled = false;
+  resetBtn = true;
+  addForm!: FormGroup;
+  adminPass = '';
+  catDrop = [{ val: 'Normal' }, { val: 'Slot' }, { val: 'Sports' }, { val: 'Live' }, { val: 'Jili' }];
+  userWals: any = [];
+  tmpOps: any = [];
+  levOps: any = [];
+  constructor(private formBuilder: FormBuilder, private apiservice: ApiService, private utilities: CommonFunctionService) { }
+  ngOnInit() {
+    this.userWals = JSON.parse(sessionStorage.getItem('WalList') || '{}');
+    this.initializeForm();
+    // let mGroup1 = this.tmpArr.find(wal => wal.WalletTypeId == this.addForm.get('WalletTypeId').getRawValue());
+    // if(mGroup1&&('WalletwsList' in mGroup1)){
+    //   this.tmpOps=mGroup1.WalletwsList.map(({ Id, Name }) => ({ name: Name, value: Id }));
+    //   this.addForm.get('TemplateId').setValue(this.tmpOps[0].value);
+    // }
+    // else{
+    //   this.tmpOps=[{value:'',name:'Select'}];
+    //   this.addForm.get('TemplateId').setValue('');
+    // }
+    // let mLev1 = this.levArr.find(wal => wal.WalletTypeId == this.addForm.get('WalletTypeId').getRawValue());
+    // if(mLev1&&('WalletwsList' in mLev1)){
+    //   this.levOps=mLev1.WalletwsList.map(({ Id, Name }) => ({ name: Name, value: Id }));
+    //   this.addForm.get('LevelId').setValue(this.levOps[0].value);
+    // }
+    // else{
+    //   this.levOps=[{value:'',name:'Select'}];
+    //   this.addForm.get('LevelId').setValue('');
+    // }
+    // this.addForm.get('WalletTypeId').valueChanges.subscribe(value => {
+    //   let mGroup = this.tmpArr.find(wal => wal.WalletTypeId == value);
+    //   if(mGroup&&('WalletwsList' in mGroup)){
+    //     this.tmpOps=mGroup.WalletwsList.map(({ Id, Name }) => ({ name: Name, value: Id }));
+    //     this.addForm.get('TemplateId').setValue(this.tmpOps[0].value);
+    //   }
+    //   else{
+    //     this.tmpOps=[{value:'',name:'Select'}];
+    //     this.addForm.get('TemplateId').setValue('');
+    //   }
+    //   let mLev = this.levArr.find(wal => wal.WalletTypeId == value);
+    //   if(mLev&&('WalletwsList' in mLev)){
+    //     this.levOps=mLev.WalletwsList.map(({ Id, Name }) => ({ name: Name, value: Id }));
+    //     this.addForm.get('LevelId').setValue(this.levOps[0].value);
+    //   }
+    //   else{
+    //     this.levOps=[{value:'',name:'Select'}];
+    //     this.addForm.get('LevelId').setValue('');
+    //   }
+    // });
+  }
+
+  initializeForm() {
+    this.addForm = this.formBuilder.group({
+      DepositCount: ["", [Validators.required]],
+      MinimumDepositAmount: ["", [Validators.required]],
+      DepositAmount: ["", [Validators.required]],
+      DepositPercentage: ["", [Validators.required]],
+      CapLimit: ["", [Validators.required]],
+      PromotionCode: ["", [Validators.required]],
+      Title: ["", [Validators.required]],
+      Description: ["", [Validators.required]],
+      ExactDepositCount: ["", [Validators.required]],
+      Wagering: ["", [Validators.required]],
+      Category: [this.catDrop[0].val, [Validators.required]],
+      WalletTypeId: [parseInt(sessionStorage.getItem('WalChosen') || '{}')],
+      SiteCode: [sessionStorage.getItem('selectedSite')],
+    });
+  }
+
+  onBack() {
+    this.onCancel.emit();
+  }
+
+  onSubmit() {
+    if (this.addForm.invalid) {
+      this.utilities.toastMsg('warning', 'Please enter Required Data!', '');
+    }
+    else {
+      this.submitDisabled = true;
+      let FormValue = this.addForm.getRawValue();
+      if (!FormValue.id) {
+        delete FormValue.id;
+        this.apiservice.sendRequest(config['newDepoPromo'], FormValue, "newDepoPromo").subscribe((data: any) => {
+          this.submitDisabled = false;
+          if (data.ErrorCode === "1") {
+            this.utilities.toastMsg('success', "Success", data.ErrorMessage);
+            this.adminPass = data.ErrorMessage;
+            this.addForm.disable();
+            this.onCancel.emit();
+          }
+          else {
+            this.utilities.toastMsg('warning', "Failed", data.Result + " : " + data.ErrorMessage);
+          }
+          this.onSave.emit();
+        }, (error) => {
+          console.log(error);
+        });
+      }
+    }
+  }
+}
