@@ -398,6 +398,7 @@ export class MyDashboardComponent implements OnInit, OnDestroy {
     });
   }
   getDashboardChart1() {
+  //Added by shaunak to assign default dates if they are still null or undefined (just to be safe)
     this.currentQuery3.StartDateTime = this.currentQuery3.StartDateTime || this.maxDFM3;
     this.currentQuery3.EndDateTime = this.currentQuery3.EndDateTime || this.maxDF;
 

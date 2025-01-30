@@ -1,3 +1,5 @@
+<div class="container">
+
 <h5 style="text-align: center;">{{AcceptRejectVar=='A'?'Approve':'Reject'}} Withdraw Of <span style="font-weight: bold;">{{userData.AccountHolderName}}&nbsp; ({{userData.AccountNumber}})</span></h5>
 
 <ng-container *ngIf="AcceptRejectVar=='A'">
@@ -38,4 +40,5 @@
         <button *ngIf="AcceptRejectVar=='A'" type="button" class="btn btn-primary font7" (click)="onApprove()" [disabled]="approveDisabled">Approve <b> Using Payconnect </b> <i *ngIf="approveDisabled" class="fa fa-sync fa-spin"></i></button>
         <button *ngIf="AcceptRejectVar=='R'" type="button" class="btn btn-primary font7" (click)="onApprove()" [disabled]="approveDisabled">Reject  <i *ngIf="approveDisabled" class="fa fa-sync fa-spin"></i></button>
     </div>
+</div>
 </div>
