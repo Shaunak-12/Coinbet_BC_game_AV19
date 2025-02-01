@@ -1,13 +1,14 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup } from "@angular/forms";
-
-import { config } from '@services/config';
-import { ApiService } from '@services/api.service';
-import { CommonFunctionService } from '@services/common-function.service';
+import { ModulesModule } from '@modules/modules/modules.module';
+import { SharedModule } from '@shared/shared.module';
 
 @Component({
   selector: 'app-calling-pop',
-  imports: [],
+  imports: [
+    // SharedModule
+    ModulesModule
+  ],
   templateUrl: './calling-pop.component.html',
   styleUrl: './calling-pop.component.scss'
 })

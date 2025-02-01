@@ -3,12 +3,15 @@ import { ApiService } from '@services/api.service';
 import { CommonFunctionService } from '@services/common-function.service';
 import { HttpClient } from '@angular/common/http';
 import { config } from '@services/config';
-import { TitleHeaderComponent } from '@shared/title-header/title-header.component';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from '@shared/shared.module';
+import { ModulesModule } from '@modules/modules/modules.module';
 
 @Component({
   selector: 'app-bulk-lead',
-  imports: [TitleHeaderComponent, CommonModule],
+  imports: [
+    // SharedModule
+    ModulesModule
+  ],
   templateUrl: './bulk-lead.component.html',
   styleUrl: './bulk-lead.component.scss'
 })

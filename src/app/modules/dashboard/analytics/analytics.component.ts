@@ -4,11 +4,15 @@ import { CommonFunctionService } from '@services/common-function.service';
 import { ApiService } from '@services/api.service';
 import { config } from '@services/config';
 import moment from 'moment';
-import { TitleHeaderComponent } from '@shared/title-header/title-header.component';
+import { SharedModule } from '@shared/shared.module';
+import { ModulesModule } from '@modules/modules/modules.module';
 
 @Component({
   selector: 'app-analytics',
-  imports: [TitleHeaderComponent],
+  imports: [
+    // SharedModule
+    ModulesModule
+  ],
   templateUrl: './analytics.component.html',
   styleUrl: './analytics.component.scss'
 })

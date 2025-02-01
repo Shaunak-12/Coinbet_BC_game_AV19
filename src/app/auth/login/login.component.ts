@@ -5,69 +5,15 @@ import { ApiService } from '@services/api.service';
 import { CommonFunctionService } from '@services/common-function.service';
 import { Subscription } from 'rxjs';
 import { UntypedFormGroup, UntypedFormControl, Validators, ReactiveFormsModule } from '@angular/forms';
-// import { config } from '@services/config';
-// import { AppService } from '@services/app.service';
-// import { ApiService } from '@services/api.service';
-// import { CommonFunctionService } from '@services/common-function.service';
-
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
-
-import { MatTableModule } from "@angular/material/table";
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatSnackBarModule } from "@angular/material/snack-bar";
-import { MatIconModule } from "@angular/material/icon";
-import { FormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatInputModule } from '@angular/material/input';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatSelectModule } from '@angular/material/select';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-
-// import { FeatherModule } from 'angular-feather';
-// import { allIcons } from 'angular-feather/icons';
-// import { CurrencySymbolPipe } from '../../shared/currency/CurrencySymbolPipe';
-import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
-import { FeatherModule } from 'angular-feather';
 import { RouterModule } from '@angular/router';
+import { AuthModule } from '@auth/auth.module';
 // import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
   imports: [
     RouterModule,
-    CommonModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    MatTableModule,
-    MatFormFieldModule,
-    MatSnackBarModule,
-    MatIconModule,
-    FormsModule,
-    MatButtonModule,
-    MatDatepickerModule,
-    MatInputModule,
-    MatNativeDateModule,
-    MatTabsModule,
-    MatDialogModule,
-    MatRadioModule,
-    MatSelectModule,
-    MatPaginatorModule,
-    MatProgressSpinnerModule,
-    MatSlideToggleModule,
-    FeatherModule,
-    MatCheckboxModule,
-    MatExpansionModule,
-    MatProgressBarModule
+    AuthModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',

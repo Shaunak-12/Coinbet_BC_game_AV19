@@ -29,32 +29,15 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatAccordion, MatExpansionModule} from '@angular/material/expansion';
 import { AdvanceTableComponent } from '@shared/advance-table/advance-table.component';
 import { FeatherModule } from 'angular-feather';
+import { SharedModule } from '@shared/shared.module';
+import { ModulesModule } from '@modules/modules/modules.module';
 
 @Component({
   selector: 'app-bank-details',
   imports: [
-    AdvanceTableComponent,
-     MatProgressSpinnerModule,CommonModule,
-                          ReactiveFormsModule,
-                              MatTableModule,
-                              MatFormFieldModule,
-                              MatSnackBarModule,
-                              MatIconModule,
-                              FormsModule,
-                              MatButtonModule,
-                              MatDatepickerModule,
-                              MatInputModule,
-                              MatNativeDateModule,
-                              MatTabsModule,
-                              MatDialogModule,
-                              MatRadioModule,
-                              MatSelectModule,
-                              MatPaginatorModule,
-                              MatSlideToggleModule,
-                              FeatherModule,
-                              MatCheckboxModule,
-                              MatExpansionModule,
-                              MatProgressBarModule
+    // AdvanceTableComponent,
+    // SharedModule
+    ModulesModule
   ],
   templateUrl: './bank-details.component.html',
   styleUrl: './bank-details.component.scss'

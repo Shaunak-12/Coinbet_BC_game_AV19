@@ -7,33 +7,7 @@ import { ApiService } from '@services/api.service';
 import { config } from '@services/config';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import moment from 'moment';
-
-
-import { CommonModule } from '@angular/common';
 import { Component, OnInit, TemplateRef, ViewChild, Input, Output, EventEmitter, OnChanges, SimpleChanges, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { Validators, FormControl, FormsModule, FormBuilder, FormGroup, FormArray, AbstractControl } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatTableModule } from '@angular/material/table';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatInputModule } from '@angular/material/input';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatSelectModule } from '@angular/material/select';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
-
-import { DynaTableComponent } from '@shared/dyna-table/dyna-table.component';
 import { PlayerDepositComponent } from '../player-deposit/player-deposit.component';
 import { PlayerStatementComponent } from '../player-statement/player-statement.component';
 import { PlayerWithdrawComponent } from '../player-withdraw/player-withdraw.component';
@@ -44,33 +18,14 @@ import { PlayerDetailsIssueComponent } from '../player-details-issue/player-deta
 import { OnlineDepositWithdrawComponent } from '../online-deposit-withdraw/online-deposit-withdraw.component';
 import { BlockUserComponent } from '../block-user/block-user.component';
 import { EditRolloveramountComponent } from './edit-rolloveramount/edit-rolloveramount.component';
-import { FeatherModule } from 'angular-feather';
+import { SharedModule } from '@shared/shared.module';
+import { ModulesModule } from '@modules/modules/modules.module';
 
 @Component({
   selector: 'app-player-details',
-  imports: [
-    DynaTableComponent,PlayerDepositComponent,PlayerStatementComponent,PlayerWithdrawComponent,PlayerGamePlayedComponent,PlayerCallLogComponent,PlayerOnlineDepositComponent,PlayerDetailsIssueComponent,OnlineDepositWithdrawComponent,BlockUserComponent,EditRolloveramountComponent,
-    MatProgressSpinnerModule, CommonModule,
-        ReactiveFormsModule,
-        MatTableModule,
-        MatFormFieldModule,
-        MatSnackBarModule,
-        MatIconModule,
-        FormsModule,
-        MatButtonModule,
-        MatDatepickerModule,
-        MatInputModule,
-        MatNativeDateModule,
-        MatTabsModule,
-        MatDialogModule,
-        MatRadioModule,
-        MatSelectModule,
-        MatPaginatorModule,
-        MatSlideToggleModule,
-        FeatherModule,
-        MatCheckboxModule,
-        MatExpansionModule,
-        MatProgressBarModule
+  imports: [PlayerDepositComponent,PlayerStatementComponent,PlayerWithdrawComponent,PlayerGamePlayedComponent,PlayerCallLogComponent,PlayerOnlineDepositComponent,PlayerDetailsIssueComponent,OnlineDepositWithdrawComponent,BlockUserComponent,EditRolloveramountComponent,
+    // SharedModule
+    ModulesModule
   ],
   templateUrl: './player-details.component.html',
   styleUrl: './player-details.component.scss'

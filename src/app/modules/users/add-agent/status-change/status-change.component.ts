@@ -27,31 +27,14 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatAccordion, MatExpansionModule} from '@angular/material/expansion';
 import { FeatherModule } from 'angular-feather';
+import { SharedModule } from '@shared/shared.module';
+import { ModulesModule } from '@modules/modules/modules.module';
 
 @Component({
   selector: 'app-status-change',
   imports: [
-    MatProgressSpinnerModule,CommonModule,
-          ReactiveFormsModule,
-              MatTableModule,
-              MatFormFieldModule,
-              MatSnackBarModule,
-              MatIconModule,
-              FormsModule,
-              MatButtonModule,
-              MatDatepickerModule,
-              MatInputModule,
-              MatNativeDateModule,
-              MatTabsModule,
-              MatDialogModule,
-              MatRadioModule,
-              MatSelectModule,
-              MatPaginatorModule,
-              MatSlideToggleModule,
-              FeatherModule,
-              MatCheckboxModule,
-              MatExpansionModule,
-              MatProgressBarModule
+    // SharedModule
+    ModulesModule
   ],
   templateUrl: './status-change.component.html',
   styleUrl: './status-change.component.scss'

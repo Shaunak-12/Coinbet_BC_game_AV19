@@ -37,31 +37,15 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { CommonModule } from '@angular/common';
 import { FeatherModule } from 'angular-feather';
+import { SharedModule } from '@shared/shared.module';
+import { ModulesModule } from '@modules/modules/modules.module';
 @Component({
   selector: 'app-leveltempconfig',
-  imports: [MultiInputHeaderComponent, AdvanceTableComponent, AddlevtempconfComponent, EditlevtempconfComponent,
-    MatProgressSpinnerModule, CommonModule,
-    ReactiveFormsModule,
-    MatTableModule,
-    MatFormFieldModule,
-    MatSnackBarModule,
-    MatIconModule,
-    FormsModule,
-    MatButtonModule,
-    MatDatepickerModule,
-    MatInputModule,
-    MatNativeDateModule,
-    MatTabsModule,
-    MatDialogModule,
-    MatRadioModule,
-    MatSelectModule,
-    MatPaginatorModule,
-    MatSlideToggleModule,
-    FeatherModule,
-    MatCheckboxModule,
-    MatExpansionModule,
-    MatProgressBarModule,
-    MatRippleModule
+  imports: [
+    // SharedModule,
+    ModulesModule,
+    AddlevtempconfComponent, 
+    EditlevtempconfComponent
   ],
   templateUrl: './leveltempconfig.component.html',
   styleUrl: './leveltempconfig.component.scss'

@@ -4,7 +4,6 @@ import moment from 'moment';
 import { ApiService } from '@services/api.service';
 import { config } from '@services/config';
 import { CommonFunctionService } from '@services/common-function.service';
-
 import { CommonModule, DatePipe } from '@angular/common';
 import Chart from 'chart.js/auto';
 import { AdvanceTitleHeadNewComponent } from '../../../shared/advance-title-head-new/advance-title-head-new.component';
@@ -13,6 +12,7 @@ import { AdvanceTableComponent } from '../../../shared/advance-table/advance-tab
 import { SharedModule } from '../../../shared/shared.module';
 import { ReportModule } from '@modules/report/report.module';
 import { LeadsModule } from '@modules/leads/leads.module';
+import { ModulesModule } from '@modules/modules/modules.module';
 
 interface Wallet {
   Id: number;
@@ -21,7 +21,16 @@ interface Wallet {
 }
 @Component({
   selector: 'app-my-dashboard',
-  imports: [AdvanceTitleHeadNewComponent, CardListComponent, AdvanceTableComponent, SharedModule, CommonModule, ReportModule, LeadsModule],
+  imports: [
+    AdvanceTitleHeadNewComponent,
+     CardListComponent,
+      AdvanceTableComponent,
+      //  SharedModule,
+      ModulesModule,
+        CommonModule,
+        ReportModule, 
+        LeadsModule
+      ],
   templateUrl: './my-dashboard.component.html',
   styleUrl: './my-dashboard.component.scss',
   providers: [DatePipe]
