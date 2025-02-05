@@ -35,6 +35,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { CommonModule } from '@angular/common';
 import { FeatherModule } from 'angular-feather';
+
 const BASE_CLASSES = 'main-header navbar navbar-expand';
 
 @Component({

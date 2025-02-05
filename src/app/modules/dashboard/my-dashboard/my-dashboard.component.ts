@@ -145,7 +145,8 @@ export class MyDashboardComponent implements OnInit, OnDestroy {
     this.currentQuery2.StartDateTime = this.currentQuery2.StartDateTime || this.maxDFM1;
     this.currentQuery2.EndDateTime = this.currentQuery2.EndDateTime || this.maxDF;
     this.GetDashboardChart();
-
+    
+     // Added by shaunak to Set default dates for page load
     this.currentQuery3.StartDateTime = this.currentQuery3.StartDateTime || this.maxDFM3;
     this.currentQuery3.EndDateTime = this.currentQuery3.EndDateTime || this.maxDF;
     this.getDashboardChart1();
