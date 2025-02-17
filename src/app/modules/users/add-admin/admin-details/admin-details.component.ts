@@ -119,6 +119,7 @@ export class AdminDetailsComponent implements OnInit {
     }
     this.GetUserDetails();
   }
+  // Using POST method
   GetUserDetails() {
     this.initializeData();
     this.apiservice.sendRequest(config['getAdminDetails'], this.currentQuery, 'getAdminDetails').subscribe((data: any) => {
@@ -155,6 +156,58 @@ export class AdminDetailsComponent implements OnInit {
       console.log(error);
     });
   }
+
+  // Using GET method 
+  // GetUserDetails() {
+  //   this.initializeData();
+  
+  //   // Construct the query parameters manually
+  //   const queryParams = new URLSearchParams({
+  //     PageNo: this.currentQuery.PageNo.toString(),
+  //     Search: this.currentQuery.Search,
+  //     AdminId: this.currentQuery.AdminId.toString(),
+  //     PageSize: this.currentQuery.PageSize.toString(),
+  //     WalletTypeId: this.currentQuery.WalletTypeId.toString(),
+  //     Date: moment(this.currentQuery.Date).format('YYYY-MM-DD HH:mm:ss'),
+  //     Type: this.currentQuery.Type
+  //   }).toString();
+  
+  //   // Append query params to the API endpoint
+  //   const apiUrlWithParams = `${config['getAdminDetails']}?${queryParams}`;
+  
+  //   // Call the existing getRequest method
+  //   this.apiservice.getRequest(apiUrlWithParams, 'getAdminDetails').subscribe((data: any) => {
+  //     this.AllAdmininfo = data;
+  //     if (this.AllAdmininfo[0]) {
+  //       this.AdminDataCollumns = this.AdminCollumnHeaders;
+  //       this.pagesTotal = Math.ceil(this.AllAdmininfo[0].TotalCount / this.currentQuery.PageSize);
+  //       this.AllAdmininfo.forEach((element: any, index: any) => {
+  //         this.AdmininfoData.push([
+  //           { value: ((this.currentQuery.PageNo - 1) * this.currentQuery.PageSize) + (index + 1), bg: 'white-cell' },
+  //           { value: element.FName ? (element.FName + ' ' + (element.LName ? element.LName : '')) : '', bg: 'white-cell' },
+  //           { value: element.Mobile, bg: 'white-cell' },
+  //           {
+  //             bg: 'white-cell', icon: "Multi", value: [
+  //               { value: "Total Deposit: " + element.TotalDeposit, bg: 'white-cell' },
+  //               { brLine: true },
+  //               { value: "Total Withdraw : " + element.TotalWithdrawal, bg: 'white-cell' },
+  //             ]
+  //           },
+  //           { value: element.TotalProfit, bg: 'white-cell' },
+  //           { value: 'Call', bg: 'white-cell', icon: 'None' },
+  //         ]);
+  //       });
+  //       this.rowCount = { f: this.AdmininfoData[0][0].value, l: this.AdmininfoData[this.AdmininfoData.length - 1][0].value, t: this.AllAdmininfo[0].TotalCount };
+  //       this.setPaginator();
+  //     } else {
+  //       this.rowCount = { f: 0, l: 0, t: 0 };
+  //       this.AdminDataCollumns = this.utilities.TableDataNone;
+  //     }
+  //   }, (error) => {
+  //     console.log(error);
+  //   });
+  // }
+  
 
 
   setPaginator() {
